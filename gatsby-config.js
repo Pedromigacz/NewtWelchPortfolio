@@ -9,6 +9,12 @@ module.exports = {
     `gatsby-plugin-sass`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
+    {
+      resolve: `gatsby-plugin-layout`,
+      options: {
+        component: require.resolve(`./src/templates/global.jsx`),
+      },
+    },
     // {
     //   resolve: `gatsby-source-filesystem`,
     //   options: {
