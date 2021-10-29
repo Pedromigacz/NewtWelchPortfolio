@@ -1,7 +1,17 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import * as styles from "../styles/FirstContainer.module.sass"
+import { AnimatePresence, motion } from "framer-motion"
 
 const FirstContainer = () => {
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY !== 0) setScrolled(true)
+      else setScrolled(false)
+    })
+  }, [])
+
   return (
     <>
       <div className={styles.container}>
@@ -13,9 +23,18 @@ const FirstContainer = () => {
           </span>
         </h1>
       </div>
-      <div className={styles.buttonContainer}>
-        <button className={styles.portfolioButton}>PORTFOLIO</button>
-      </div>
+      <AnimatePresence>
+        {!scrolled && (
+          <motion.div
+            className={styles.buttonContainer}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <button className={styles.portfolioButton}>PORTFOLIO</button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   )
 }
