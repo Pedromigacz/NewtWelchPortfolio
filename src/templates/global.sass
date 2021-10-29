@@ -1,3 +1,11 @@
+body
+  margin: 0
+  --font-one: 'Unica One', cursive
+  --font-two: 'Secular One', sans-serif
+
+// Import fonts
+@import url('https://fonts.googleapis.com/css2?family=Secular+One&family=Unica+One&display=swap')
+  
 // n is number of stars required
 @function multiple-box-shadow ($n) 
   $value: '#{random(2000)}px #{random(2000)}px #fadfa5'
@@ -22,6 +30,7 @@ html
   box-shadow: $shadows-small
   animation: animStar 50s linear infinite
   border-radius: 50%
+  margin-bottom: -10px
     
   &:after
     content: " "
@@ -39,6 +48,7 @@ html
   box-shadow: $shadows-medium
   animation			: animStar 100s linear infinite
   border-radius: 50%
+  margin-bottom: -2px
     
   &:after
     content: " "
@@ -56,6 +66,7 @@ html
   box-shadow: $shadows-big
   animation			: animStar 150s linear infinite
   border-radius: 50%
+  margin-bottom: -3px
     
   &:after
     content: " "
@@ -72,3 +83,6 @@ html
   to		
     transform: translateY(-2000px)
     
+#topContainer
+  position: relative
+  z-index: 10
