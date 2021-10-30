@@ -13,7 +13,7 @@ const FirstContainer = () => {
   }, [])
 
   return (
-    <>
+    <section>
       <div className={styles.container}>
         <h1 className={styles.title}>
           <span className={styles.titleOne}>Hanlo, I am</span>
@@ -35,7 +35,7 @@ const FirstContainer = () => {
           </motion.div>
         )}
       </AnimatePresence>
-    </>
+    </section>
   )
 }
 
