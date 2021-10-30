@@ -15,6 +15,15 @@ module.exports = {
         component: require.resolve(`./src/templates/global.jsx`),
       },
     },
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: `2hn8zhuqb49p`,
+        accessToken:
+          process.env.CONTENTFUL_ACCESS_TOKEN ||
+          "GZWqayozmY5wph3RrQ_mXXCYkbSOedNE1H7opc-ocms",
+      },
+    },
     // {
     //   resolve: `gatsby-source-filesystem`,
     //   options: {
