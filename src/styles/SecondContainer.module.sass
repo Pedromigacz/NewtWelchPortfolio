@@ -13,3 +13,34 @@
     grid-column: span 2
     grid-row: span 2
     aspect-ratio: unset
+  &:hover .projectLink
+    position: relative
+    z-index: 9999
+    background: rgba(0, 0, 0, 0.8)
+
+
+.projectLink
+  text-decoration: none
+  border: none
+  display: inline-grid
+  place-items: center
+  width: 100%
+  height: 100%
+  margin-top: -100%
+  color: #fff
+  float: left
+  cursor: pointer
+
+.porjectDetailsText
+  font-family: var(--font-one)
+  font-weight: 300
+  font-size: 2rem
+  &:after
+    content: ""
+    display: inline-block
+    width: 0
+    height: 0
+    border-top: 11px solid transparent
+    border-bottom: 11px solid transparent
+    border-left: 14px solid #fff
+    margin-left: .75rem

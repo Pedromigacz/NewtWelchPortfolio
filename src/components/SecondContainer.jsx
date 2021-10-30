@@ -1,6 +1,6 @@
 import React from "react"
 import * as styles from "../styles/SecondContainer.module.sass"
-import { graphql, useStaticQuery } from "gatsby"
+import { graphql, useStaticQuery, Link } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 const SecondContainer = () => {
@@ -27,11 +27,12 @@ const SecondContainer = () => {
   return (
     <section className={styles.section}>
       {nodes.map(project => (
-        <GatsbyImage
-          image={getImage(project.image)}
-          alt={project.title}
-          className={styles.cardDiv}
-        />
+        <div className={styles.cardDiv}>
+          <GatsbyImage image={getImage(project.image)} alt={project.title} />
+          <Link className={styles.projectLink} to={`/projects/${project.id}`}>
+            <span className={styles.porjectDetailsText}>Project details</span>
+          </Link>
+        </div>
       ))}
     </section>
   )
