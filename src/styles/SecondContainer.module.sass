@@ -1,0 +1,14 @@
+.section
+  margin: 10rem auto
+  min-width: 60%
+  max-width: 80%
+  display: grid
+  grid-template-columns: 1fr 1fr 1fr
+  gap: 1rem
+
+.cardDiv
+  border: 2px solid #ffffff
+  aspect-ratio: 1
+  &:nth-child(5n)
+    grid-column: span 2
+    aspect-ratio: unset
