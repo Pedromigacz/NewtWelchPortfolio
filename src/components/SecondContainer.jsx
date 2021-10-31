@@ -25,7 +25,7 @@ const SecondContainer = () => {
   `)
 
   return (
-    <section className={styles.section}>
+    <section className={styles.section} id="sectionTwo">
       {nodes.map(project => (
         <div className={styles.cardDiv}>
           <GatsbyImage image={getImage(project.image)} alt={project.title} />

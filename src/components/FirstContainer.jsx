@@ -25,14 +25,15 @@ const FirstContainer = () => {
       </div>
       <AnimatePresence>
         {!scrolled && (
-          <motion.div
+          <motion.a
+            href="#sectionTwo"
             className={styles.buttonContainer}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
             <button className={styles.portfolioButton}>PORTFOLIO</button>
-          </motion.div>
+          </motion.a>
         )}
       </AnimatePresence>
     </section>
