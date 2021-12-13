@@ -9,19 +9,22 @@
 .cardDiv
   aspect-ratio: 1 !important
   cursor: pointer
+  border: none
+  background: transparent
   &:nth-child(5n)
     grid-column: span 2
     grid-row: span 2
     aspect-ratio: unset
-  &:hover .projectLink
+  &:hover .openProjectButton
     position: relative
     z-index: 9999
     background: rgba(0, 0, 0, 0.8)
 
 
-.projectLink
+.openProjectButton
   text-decoration: none
   border: none
+  background: transparent
   display: inline-grid
   place-items: center
   width: 100%

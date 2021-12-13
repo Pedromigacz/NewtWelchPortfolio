@@ -1,15 +1,24 @@
-import * as React from "react"
+import React, { useState } from "react"
 
 import Seo from "../components/seo"
 
-import { FirstContainer, SecondContainer } from "../components"
+import { FirstContainer, SecondContainer, SlideShow } from "../components"
 
-const IndexPage = () => (
-  <>
-    <Seo title="Newt Welch portfolio" />
-    <FirstContainer />
-    <SecondContainer />
-  </>
-)
+const IndexPage = () => {
+  const [modal, setModal] = useState(false)
+
+  const closeModal = () => {
+    setModal(false)
+  }
+
+  return (
+    <>
+      <Seo title="Newt Welch portfolio" />
+      <FirstContainer />
+      <SecondContainer setModal={setModal} />
+      <SlideShow modal={modal} closeModal={closeModal} />
+    </>
+  )
+}
 
 export default IndexPage
