@@ -1,15 +1,18 @@
 import React from "react"
 import * as styles from "../styles/SecondContainer.module.sass"
-import { graphql, useStaticQuery, Link } from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
-const SecondContainer = () => {
+const SecondContainer = ({ setModal }) => {
   const {
     allContentfulProject: { nodes },
   } = useStaticQuery(graphql`
     {
       allContentfulProject {
         nodes {
+          description {
+            raw
+          }
           title
           id
           image {
@@ -17,6 +20,13 @@ const SecondContainer = () => {
               layout: FULL_WIDTH
               quality: 100
               placeholder: TRACED_SVG
+            )
+          }
+          presentation {
+            gatsbyImageData(
+              placeholder: DOMINANT_COLOR
+              layout: FULL_WIDTH
+              quality: 100
             )
           }
         }
@@ -27,12 +37,17 @@ const SecondContainer = () => {
   return (
     <section className={styles.section} id="sectionTwo">
       {nodes.map(project => (
-        <div className={styles.cardDiv}>
+        <button
+          className={styles.cardDiv}
+          onClick={() => {
+            setModal(project)
+          }}
+        >
           <GatsbyImage image={getImage(project.image)} alt={project.title} />
-          <Link className={styles.projectLink} to={`/projects/${project.id}`}>
-            <span className={styles.porjectDetailsText}>Project details</span>
-          </Link>
-        </div>
+          <p className={styles.openProjectButton}>
+            <span className={styles.porjectDetailsText}>See more</span>
+          </p>
+        </button>
       ))}
     </section>
   )
