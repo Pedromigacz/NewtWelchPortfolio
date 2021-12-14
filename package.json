@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "axios": "^0.24.0",
     "framer-motion": "^5.0.0",
     "gatsby": "^4.0.1",
     "gatsby-plugin-gatsby-cloud": "^4.0.0",

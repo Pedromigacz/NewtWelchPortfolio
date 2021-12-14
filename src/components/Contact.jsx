@@ -4,6 +4,7 @@ import * as styles from "../styles/Contact.module.sass"
 import { FloatingTagInput } from "./"
 import CloseIcon from "../vectors/CloseIcon.jsx"
 import { AnimatePresence, motion } from "framer-motion"
+import axios from "axios"
 
 const ContactForm = ({ closeModal }) => {
   const [loading, setLoading] = useState(false)
@@ -13,6 +14,53 @@ const ContactForm = ({ closeModal }) => {
     phone: "",
     message: "",
   })
+  const [feedback, setFeedback] = useState({ message: "", success: false })
+
+  const handleSubmit = event => {
+    event.preventDefault()
+    if (loading) {
+      return
+    }
+    setLoading(true)
+
+    if (!form.name) {
+      setFeedback({ message: "Missing Name!", success: false })
+      return setLoading(false)
+    }
+    if (!form.message) {
+      setFeedback({ message: "Missing message!", success: false })
+      return setLoading(false)
+    }
+
+    axios
+      .request({
+        method: "POST",
+        url: "/",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        data: new URLSearchParams({
+          "form-name": "contact",
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          message: form.message,
+        }),
+      })
+      .then(e => {
+        setForm({
+          name: "",
+          email: "",
+          phone: "",
+          message: "",
+        })
+        setFeedback({ message: "Message sent successfully!", success: true })
+        setLoading(false)
+      })
+      .catch(err => {
+        setFeedback({ message: "Something went wrong!", success: false })
+        console.log(err)
+        setLoading(false)
+      })
+  }
 
   return (
     <motion.div
@@ -23,6 +71,7 @@ const ContactForm = ({ closeModal }) => {
     >
       <form
         className={styles.formModal}
+        onSubmit={handleSubmit}
         name="contact"
         action="/contact"
         method="post"
@@ -76,6 +125,25 @@ const ContactForm = ({ closeModal }) => {
             setForm(prev => ({ ...prev, message: e.target.value }))
           }}
         />
+
+        <p
+          style={{ color: feedback.success ? "#0f2" : "#f12" }}
+          className={styles.feedbackMessage}
+        >
+          {feedback.message.length > 0 && (
+            <>
+              {feedback.message}{" "}
+              <button
+                onClick={e => {
+                  e.preventDefault()
+                  setFeedback({ message: "", success: "" })
+                }}
+              >
+                X
+              </button>
+            </>
+          )}
+        </p>
         <button type="submit" className={styles.submitButton}>
           {loading ? "Loading..." : "SEND"}
         </button>
