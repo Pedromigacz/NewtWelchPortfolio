@@ -28,9 +28,10 @@ const SlideShow = ({ modal, closeModal }) => {
           <p>{renderRichText(modal.description, richTextOptions)}</p>
         </section>
         <section>
-          {modal.presentation.map((slide, key) => (
-            <GatsbyImage image={getImage(slide)} alt={slide} key={key} />
-          ))}
+          {modal.presentation &&
+            modal.presentation.map((slide, key) => (
+              <GatsbyImage image={getImage(slide)} alt={slide} key={key} />
+            ))}
         </section>
       </main>
     </div>
