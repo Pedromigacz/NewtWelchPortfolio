@@ -33,7 +33,13 @@ const ContactForm = ({ closeModal }) => {
         <input type="hidden" name="form-name" value="contact" />
         <h1 className={styles.title}>
           <span>CONTACT</span>
-          <button className={styles.closeContact} onClick={closeModal}>
+          <button
+            className={styles.closeContact}
+            onClick={e => {
+              e.preventDefault()
+              closeModal()
+            }}
+          >
             <CloseIcon />
           </button>
         </h1>
