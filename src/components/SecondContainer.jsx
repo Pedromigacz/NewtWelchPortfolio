@@ -37,12 +37,13 @@ const SecondContainer = ({ setModal }) => {
 
   return (
     <section className={styles.section} id="sectionTwo">
-      {nodes.map(project => (
+      {nodes.map((project, key) => (
         <button
           className={styles.cardDiv}
           onClick={() => {
             setModal(project)
           }}
+          key={key}
         >
           <GatsbyImage image={getImage(project.image)} alt={project.title} />
           <p className={styles.openProjectButton}>
