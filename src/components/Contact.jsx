@@ -3,8 +3,9 @@ import ContactIcon from "../vectors/ContactIcon.jsx"
 import * as styles from "../styles/Contact.module.sass"
 import { FloatingTagInput } from "./"
 import CloseIcon from "../vectors/CloseIcon.jsx"
+import { AnimatePresence, motion } from "framer-motion"
 
-const ContactForm = () => {
+const ContactForm = ({ closeModal }) => {
   const [loading, setLoading] = useState(false)
   const [form, setForm] = useState({
     name: "",
@@ -14,11 +15,16 @@ const ContactForm = () => {
   })
 
   return (
-    <div className={styles.backdrop}>
+    <motion.div
+      className={styles.backdrop}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <form className={styles.formModal}>
         <h1 className={styles.title}>
           <span>CONTACT</span>
-          <button className={styles.closeContact}>
+          <button className={styles.closeContact} onClick={closeModal}>
             <CloseIcon />
           </button>
         </h1>
@@ -55,23 +61,27 @@ const ContactForm = () => {
           {loading ? "Loading..." : "SEND"}
         </button>
       </form>
-    </div>
+    </motion.div>
   )
 }
 
 const Contact = () => {
   const [open, setOpen] = useState(false)
 
+  const closeModal = () => {
+    setOpen(false)
+  }
+
   return (
-    <>
+    <AnimatePresence>
       {open ? (
-        <ContactForm />
+        <ContactForm closeModal={closeModal} key="70" />
       ) : (
         <button className={styles.contactButton} onClick={() => setOpen(true)}>
           <ContactIcon />
         </button>
       )}
-    </>
+    </AnimatePresence>
   )
 }
 
