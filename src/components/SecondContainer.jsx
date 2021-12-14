@@ -28,6 +28,7 @@ const SecondContainer = ({ setModal }) => {
               layout: FULL_WIDTH
               quality: 100
             )
+            title
           }
         }
       }

@@ -16,7 +16,7 @@ const IndexPage = () => {
       <Seo title="Newt Welch portfolio" />
       <FirstContainer />
       <SecondContainer setModal={setModal} />
-      <SlideShow modal={modal} closeModal={closeModal} />
+      {modal && <SlideShow modal={modal} closeModal={closeModal} />}
     </>
   )
 }
