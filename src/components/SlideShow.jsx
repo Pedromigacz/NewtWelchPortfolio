@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import * as styles from "../styles/SlideShow.module.sass"
 import { renderRichText } from "gatsby-source-contentful/rich-text"
 import { INLINES, BLOCKS, MARKS } from "@contentful/rich-text-types"
@@ -20,6 +20,9 @@ const richTextOptions = {
 }
 
 const SlideShow = ({ modal, closeModal }) => {
+  useEffect(() => {
+    document.querySelector("html").style.overflow = "hidden"
+  }, [])
   return (
     <div className={styles.backdrop}>
       <main className={styles.modal}>
@@ -27,12 +30,13 @@ const SlideShow = ({ modal, closeModal }) => {
           <h1 className={styles.title}>{modal.title}</h1>
           <p>{renderRichText(modal.description, richTextOptions)}</p>
         </section>
-        <section>
+        <section className={styles.imagesContainer}>
           {modal.presentation &&
             modal.presentation.map((slide, key) => (
               <GatsbyImage image={getImage(slide)} alt={slide} key={key} />
             ))}
         </section>
+        <div className={styles.spacer} />
       </main>
     </div>
   )
