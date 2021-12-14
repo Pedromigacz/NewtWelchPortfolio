@@ -21,7 +21,16 @@ const ContactForm = ({ closeModal }) => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <form className={styles.formModal}>
+      <form
+        className={styles.formModal}
+        name="contact"
+        action="/contact"
+        method="post"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field"
+        netlify
+      >
+        <input type="hidden" name="form-name" value="contact" />
         <h1 className={styles.title}>
           <span>CONTACT</span>
           <button className={styles.closeContact} onClick={closeModal}>
@@ -29,6 +38,7 @@ const ContactForm = ({ closeModal }) => {
           </button>
         </h1>
         <FloatingTagInput
+          name="Name"
           label="Name:"
           value={form.name}
           onChange={e => {
@@ -36,6 +46,7 @@ const ContactForm = ({ closeModal }) => {
           }}
         />
         <FloatingTagInput
+          name="Email"
           label="Email:"
           value={form.email}
           onChange={e => {
@@ -43,6 +54,7 @@ const ContactForm = ({ closeModal }) => {
           }}
         />
         <FloatingTagInput
+          name="Phone"
           label="Phone:"
           value={form.phone}
           onChange={e => {
@@ -50,6 +62,7 @@ const ContactForm = ({ closeModal }) => {
           }}
         />
         <FloatingTagInput
+          name="Message"
           label="Message:"
           textArea={true}
           value={form.message}

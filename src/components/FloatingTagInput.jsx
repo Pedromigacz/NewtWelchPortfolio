@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { motion } from "framer-motion"
 import * as styles from "../styles/FloatingTagInput.module.sass"
 
-const FloatingTagInput = ({ label, onChange, value, textArea }) => {
+const FloatingTagInput = ({ label, onChange, value, textArea, name }) => {
   const [labelFocused, setLabelFocused] = useState(false)
   return (
     <span className={styles.inputContainer}>
@@ -21,6 +21,7 @@ const FloatingTagInput = ({ label, onChange, value, textArea }) => {
           type="text"
           onChange={onChange}
           value={value}
+          name={name}
         />
       ) : (
         <input
@@ -29,6 +30,7 @@ const FloatingTagInput = ({ label, onChange, value, textArea }) => {
           type="text"
           onChange={onChange}
           value={value}
+          name={name}
         />
       )}
     </span>
