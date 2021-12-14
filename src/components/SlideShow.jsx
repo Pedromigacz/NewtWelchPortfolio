@@ -3,6 +3,7 @@ import * as styles from "../styles/SlideShow.module.sass"
 import { renderRichText } from "gatsby-source-contentful/rich-text"
 import { INLINES, BLOCKS, MARKS } from "@contentful/rich-text-types"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import CloseIcon from "../vectors/CloseIcon.jsx"
 
 const richTextOptions = {
   renderMark: {
@@ -27,7 +28,12 @@ const SlideShow = ({ modal, closeModal }) => {
     <div className={styles.backdrop}>
       <main className={styles.modal}>
         <section className={styles.firstSection}>
-          <h1 className={styles.title}>{modal.title}</h1>
+          <h1 className={styles.title}>
+            {modal.title}{" "}
+            <button className={styles.closeButton} onClick={closeModal}>
+              <CloseIcon />
+            </button>
+          </h1>
           <p>{renderRichText(modal.description, richTextOptions)}</p>
         </section>
         <section className={styles.imagesContainer}>
