@@ -39,10 +39,10 @@ const ContactForm = ({ closeModal }) => {
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         data: new URLSearchParams({
           "form-name": "contact",
-          name: form.name,
-          email: form.email,
-          phone: form.phone,
-          message: form.message,
+          Name: form.name,
+          Email: form.email,
+          Phone: form.phone,
+          Message: form.message,
         }),
       })
       .then(e => {
@@ -162,15 +162,38 @@ const Contact = () => {
   }
 
   return (
-    <AnimatePresence>
-      {open ? (
-        <ContactForm closeModal={closeModal} key="70" />
-      ) : (
-        <button className={styles.contactButton} onClick={() => setOpen(true)}>
-          <ContactIcon />
-        </button>
-      )}
-    </AnimatePresence>
+    <>
+      <AnimatePresence>
+        {open ? (
+          <ContactForm closeModal={closeModal} key="70" />
+        ) : (
+          <button
+            className={styles.contactButton}
+            onClick={() => setOpen(true)}
+          >
+            <ContactIcon />
+          </button>
+        )}
+      </AnimatePresence>
+      <form
+        style={{ display: "none" }}
+        type="hidden"
+        action="/contact"
+        method="post"
+        name="contact"
+        data-netlify="true"
+        dataNetlify="true"
+        data-netlify-honeypot="bot-field"
+        dataNetlifyHoneypot="bot-field"
+        netlify="true"
+      >
+        <input type="hidden" name="form-name" value="contact" />
+        <input type="hidden" name="Name" />
+        <input type="hidden" name="Email" />
+        <input type="hidden" name="Phone" />
+        <input type="hidden" name="Message" />
+      </form>
+    </>
   )
 }
 
