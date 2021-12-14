@@ -129,7 +129,7 @@ const ContactForm = ({ closeModal }) => {
         />
 
         <p
-          style={{ color: feedback.success ? "#0f2" : "#f12" }}
+          style={{ color: feedback.success ? "#00c822" : "#f12" }}
           className={styles.feedbackMessage}
         >
           {feedback.message.length > 0 && (
