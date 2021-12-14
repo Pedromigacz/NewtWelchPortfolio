@@ -14,6 +14,7 @@ const FloatingTagInput = ({ label, onChange, value, textArea, name }) => {
       </motion.label>
       {textArea ? (
         <textarea
+          name={name}
           rows="8"
           cols="54"
           onFocus={e => setLabelFocused(true)}
@@ -21,16 +22,15 @@ const FloatingTagInput = ({ label, onChange, value, textArea, name }) => {
           type="text"
           onChange={onChange}
           value={value}
-          name={name}
         />
       ) : (
         <input
+          name={name}
           onFocus={e => setLabelFocused(true)}
           onBlur={e => setLabelFocused(false)}
           type="text"
           onChange={onChange}
           value={value}
-          name={name}
         />
       )}
     </span>
