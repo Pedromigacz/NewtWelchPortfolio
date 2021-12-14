@@ -72,12 +72,14 @@ const ContactForm = ({ closeModal }) => {
       <form
         className={styles.formModal}
         onSubmit={handleSubmit}
-        name="contact"
         action="/contact"
         method="post"
+        name="contact"
         data-netlify="true"
+        dataNetlify="true"
         data-netlify-honeypot="bot-field"
-        netlify
+        dataNetlifyHoneypot="bot-field"
+        netlify="true"
       >
         <input type="hidden" name="form-name" value="contact" />
         <h1 className={styles.title}>
