@@ -23,7 +23,11 @@ const richTextOptions = {
 const SlideShow = ({ modal, closeModal }) => {
   useEffect(() => {
     document.querySelector("html").style.overflow = "hidden"
+    return () => {
+      document.querySelector("html").style.overflow = "auto"
+    }
   }, [])
+
   return (
     <div className={styles.backdrop}>
       <main className={styles.modal}>
