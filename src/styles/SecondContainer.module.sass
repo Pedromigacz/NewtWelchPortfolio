@@ -11,6 +11,7 @@
   cursor: pointer
   border: none
   background: transparent
+  padding: 0
   &:nth-child(5n)
     grid-column: span 2
     grid-row: span 2
@@ -34,6 +35,8 @@
   float: left
   cursor: pointer
   margin-bottom: 0
+  @media(max-width: 500px)
+    display: none
 
 .porjectDetailsText
   font-family: var(--font-one)
