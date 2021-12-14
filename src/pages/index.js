@@ -3,7 +3,12 @@ import { AnimatePresence } from "framer-motion"
 
 import Seo from "../components/seo"
 
-import { FirstContainer, SecondContainer, SlideShow } from "../components"
+import {
+  FirstContainer,
+  SecondContainer,
+  SlideShow,
+  Contact,
+} from "../components"
 
 const IndexPage = () => {
   const [modal, setModal] = useState(false)
@@ -20,6 +25,7 @@ const IndexPage = () => {
       <AnimatePresence>
         {modal && <SlideShow modal={modal} closeModal={closeModal} />}
       </AnimatePresence>
+      <Contact />
     </>
   )
 }
