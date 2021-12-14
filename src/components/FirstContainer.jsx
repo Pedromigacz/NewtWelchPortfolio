@@ -26,7 +26,7 @@ const FirstContainer = () => {
       <AnimatePresence>
         {!scrolled && (
           <motion.a
-            href="#sectionTwo"
+            href="#"
             className={styles.buttonContainer}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
