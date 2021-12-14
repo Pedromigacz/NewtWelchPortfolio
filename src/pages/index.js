@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { AnimatePresence } from "framer-motion"
 
 import Seo from "../components/seo"
 
@@ -16,7 +17,9 @@ const IndexPage = () => {
       <Seo title="Newt Welch portfolio" />
       <FirstContainer />
       <SecondContainer setModal={setModal} />
-      {modal && <SlideShow modal={modal} closeModal={closeModal} />}
+      <AnimatePresence>
+        {modal && <SlideShow modal={modal} closeModal={closeModal} />}
+      </AnimatePresence>
     </>
   )
 }

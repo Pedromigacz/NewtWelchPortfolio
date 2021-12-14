@@ -4,6 +4,7 @@ import { renderRichText } from "gatsby-source-contentful/rich-text"
 import { INLINES, BLOCKS, MARKS } from "@contentful/rich-text-types"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import CloseIcon from "../vectors/CloseIcon.jsx"
+import { motion } from "framer-motion"
 
 const richTextOptions = {
   renderMark: {
@@ -29,7 +30,12 @@ const SlideShow = ({ modal, closeModal }) => {
   }, [])
 
   return (
-    <div className={styles.backdrop}>
+    <motion.div
+      className={styles.backdrop}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <main className={styles.modal}>
         <section className={styles.firstSection}>
           <h1 className={styles.title}>
@@ -48,7 +54,7 @@ const SlideShow = ({ modal, closeModal }) => {
         </section>
         <div className={styles.spacer} />
       </main>
-    </div>
+    </motion.div>
   )
 }
 
